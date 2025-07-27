@@ -6,7 +6,7 @@ dotenv.config();
 // Key: mongodb+srv://sardarrah:T24i221N@calendar.x4ubwof.mongodb.net/calendar?retryWrites=true&w=majority&appName=calendar
 export const connectDB = async () => {
     try {
-        const conn = await mongoose.connect(process.env.MONGO_URI);
+        const conn = await mongoose.connect("mongodb+srv://sardarrah:T24i221N@calendar.x4ubwof.mongodb.net/calendar?retryWrites=true&w=majority&appName=calendar");
         console.log(`MongoDB Connected: ${conn.connection.host}`);
 
         // Test the connection
