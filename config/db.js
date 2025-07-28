@@ -3,10 +3,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Key: mongodb+srv://sardarrah:T24i221N@calendar.x4ubwof.mongodb.net/calendar?retryWrites=true&w=majority&appName=calendar
+// Use the MONGO_URI from environment variables for better security
 export const connectDB = async () => {
     try {
-        const conn = await mongoose.connect("mongodb+srv://sardarrah:T24i221N@calendar.x4ubwof.mongodb.net/calendar?retryWrites=true&w=majority&appName=calendar");
+        const conn = await mongoose.connect(process.env.MONGO_URI);
         console.log(`MongoDB Connected: ${conn.connection.host}`);
 
         // Test the connection

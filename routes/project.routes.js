@@ -14,4 +14,9 @@ router.post('/', createEvent);
 
 router.delete('/:id', deleteEvent);
 
+// Add this at the top of your routes file for testing
+router.get('/test', (req, res) => {
+  res.json({ message: 'Backend is working!', timestamp: new Date() });
+});
+
 export default router;
