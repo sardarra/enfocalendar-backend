@@ -7,11 +7,9 @@ import projectRoutes from './routes/project.routes.js';
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// ✅ Enable CORS for local frontend
-
-// and production frontend on Vercel (ENFOCALENDAR.VERCEL.APP)
+// ✅ Enable CORS for production frontend on Vercel (ENFOCALENDAR.VERCEL.APP)
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://enfocalendar.vercel.app'],
+  origin: "https://enfocalendar.vercel.app",
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
   credentials: true
