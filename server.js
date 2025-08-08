@@ -3,13 +3,18 @@ import cors from 'cors';
 import { connectDB } from './config/db.js';
 import Event from './models/Events.js';
 import projectRoutes from './routes/project.routes.js';
+// import userRoutes from './routes/user.routes.js';
+import taskRoutes from './routes/tasks.routes.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// ✅ Enable CORS for local frontend
+const devMode = false;
+const frontendURL = devMode ? 'http://localhost:3000' : 'https://enfocalendar.vercel.app';
+
+// ✅ Enable CORS for local frontend (localhost:3000)
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: frontendURL,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
   credentials: true
@@ -21,10 +26,16 @@ app.get('/test-direct', (req, res) => {
   res.json({ message: 'Direct route works!', timestamp: new Date() });
 });
 
+
+
 // ✅ Routes
 app.use('/calendar/data', projectRoutes);
 
-const allowedOrigins = ['http://localhost:3000', 'https://yourfrontenddomain.com'];
+//app.use('/users', userRoutes); // Assuming userRoutes is defined elsewhere
+
+app.use('/tasks/data', taskRoutes);
+
+const allowedOrigins = ['http://localhost:3000', 'https://enfocalendar.vercel.app'];
 
 // ✅ Global error handler
 app.use((err, req, res, next) => {

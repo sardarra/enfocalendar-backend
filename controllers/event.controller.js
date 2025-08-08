@@ -32,6 +32,7 @@ export const createEvent = async (req, res) => {
             allDay: event.allDay || false,
             location: event.location,
             createdBy: event.createdBy, // Replace with actual user ID or name
+            repeat: event.repeat || 'none', // e.g., 'none', 'daily', 'weekly', 'monthly', 'yearly', 'custom'
             color: event.color || '#ffffff'
         });
         const savedEvent = await newEvent.save();
@@ -75,4 +76,5 @@ export const deleteEvent = async (req, res) => {
         console.error(`Error: ${error.message}`);
         res.status(500).send("Internal Server Error");
     }
-}
+};
+
