@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 const devMode = false;
-const frontendURL = devMode ? 'http://localhost:3000' : 'https://www.enfocalendar.com';
+const frontendURL = devMode ? 'http://localhost:3000' : 'https://app.enfocalendar.com';
 
 // ✅ Enable CORS for local frontend (localhost:3000)
 app.use(cors({
